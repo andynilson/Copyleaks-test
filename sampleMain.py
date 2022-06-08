@@ -8,7 +8,7 @@ from copyleaks.models.submit.properties.scan_properties import ScanProperties
 
 # email address and api key
 EMAIL_ADDRESS = 'andy.n@turing.com'
-KEY = '767e3ba8-5f2f-4e59-830f-dfe826c50978'
+KEY = '67a03975-04d5-4506-9201-bec32041c9d6'
 PRODUCT = Products.BUSINESSES
 
 try:
@@ -28,12 +28,12 @@ print("Submitting a new file...")
 file_text = open('solutions/baseWhileLoopSolution.py', 'rb')
 file_read = file_text.read()
 BASE64_FILE_CONTENT = result = base64.b64encode(file_read).decode('ascii') # convert the file to base 64 format
-FILENAME = "solutions/baseWhileLoopSolution.py"
+FILENAME = "baseWhileLoopSolution.py"
 scan_id = random.randint(100, 100000)  # generate a random scan id
 file_submission = FileDocument(BASE64_FILE_CONTENT, FILENAME)
-
-# send results of test to pipedream webhook
+# Send test results to pipedream webhook
 scan_properties = ScanProperties('https://eojs8lo649wa4pk.m.pipedream.net')
+scan_properties.set_sandbox(True)
 file_submission.set_properties(scan_properties)
 Copyleaks.submit_file(PRODUCT, auth_token, scan_id, file_submission)  # sending the submission to scanning
 print("Send to scanning")
