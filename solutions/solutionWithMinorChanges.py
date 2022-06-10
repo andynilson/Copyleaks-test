@@ -1,17 +1,15 @@
 class Solution(object):
-    def sumOfLeftLeaves(self, root):#comment
+    def sumOfLeftLeaves(self, root):
         if not root:
             return 0
-        #another comment
-        counter = 0
-        myStack = [root]
-        while myStack:
-            myVar = myStack.pop()
-            if myVar.left:
-                myStack.append(myVar.left)
-                # another comment
-                if not myVar.left.right and not myVar.left.left:
-                    counter += myVar.left.val
-            if myVar.right:
-                myStack.append(myVar.right)
-        return counter
+        s = [root]
+        r = 0
+        while s:
+            u = s.pop()
+            if u.left:
+                s.append(u.left)
+                if not u.left.left and not u.left.right:
+                    r += u.left.val
+            if u.right:
+                s.append(u.right)
+        return r

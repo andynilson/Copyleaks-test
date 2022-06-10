@@ -40,8 +40,9 @@ for filename in os.listdir(directory):
         file_submission = FileDocument(BASE64_FILE_CONTENT, FILENAME)
         # Send test results to pipedream webhook
         scan_properties = ScanProperties('https://eojs8lo649wa4pk.m.pipedream.net')
-        scan_properties.set_sandbox(True)
+        # scan_properties.set_sandbox(True)
+        scan_properties.set_sensitivity_level(5)
         file_submission.set_properties(scan_properties)
         Copyleaks.submit_file(PRODUCT, auth_token, scan_id, file_submission)  # sending the submission to scanning
         print("Send to scanning")
-        print("You will be notified, using your webhook, once the scan was completed.")
+        print("You will be notified, using your webhook, once the scan was completed.\n")

@@ -1,20 +1,15 @@
 class Solution(object):
-    def sumOfLeftLeaves(self, myRoot):
-        #i like comment
-        if not myRoot:
-            #comments
+    def sumOfLeftLeaves(self, root):
+        if not root:
             return 0
-        counter = 0
-        #more comments
-        myFavoritteStack = [myRoot]
-        while myFavoritteStack:
-            iLikeToNameMyVars = myFavoritteStack.pop()#comments
-            if iLikeToNameMyVars.left:
-                myFavoritteStack.append(iLikeToNameMyVars.left)
-                #comments
-                if not iLikeToNameMyVars.left.right and not iLikeToNameMyVars.left.left:
-                    counter += iLikeToNameMyVars.left.val
-            if iLikeToNameMyVars.right:
-                #comments
-                myFavoritteStack.append(iLikeToNameMyVars.right)
-        return counter
+        myStack = [root]
+        res = 0
+        while myStack:#looping through myStack
+            u = myStack.pop()
+            if u.left:
+                myStack.append(u.left)
+                if not u.left.left and not u.left.right:
+                    res += u.left.val
+            if u.right:
+                myStack.append(u.right)
+        return res
